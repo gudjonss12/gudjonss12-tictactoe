@@ -1,4 +1,4 @@
-import appContextModule from  'appContext';
+import appContextModule from  'appcontext';
 import fakeIoModule from '_test/fakeIo';
 
 describe('app context initialization', function () {
