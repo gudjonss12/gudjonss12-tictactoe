@@ -37,9 +37,9 @@
   "scripts": {
     "startclient": "cd ./client && npm run start",
     "buildclient": "cd ./client && npm run build",
-    "clean": "[ -d ./build ] && rm -r ./build",
+    "clean": "if [ -d ./build ]; then sudo rm -r ./build; fi",
     "start": "export NODE_PATH=. && npm run migratedb && nodemon run.js",
-    "createbuild": "[ -d build ] || mkdir build ",
+    "createbuild": "[ -d ./build ] || mkdir ./build ",
     "build": "export NODE_PATH=. && npm run clean && npm run createbuild && npm run buildclient && mv client/build build/static && cp -R server build/server && mkdir -p build/client/src && cp -r client/src/common build/client/src && cp run.js build",
     "test": "export NODE_PATH=. && nodemon ./node_modules/.bin/jest",
     "apitest": "export NODE_PATH=. && ./node_modules/.bin/jest --config apitest/functional-jest.json",
