@@ -51,13 +51,14 @@ _EOF_
 cp ./Dockerfile ./build/
 cp ./package.json ./build/
 cp ./wait.sh ./build/
+
 cd build
 echo Building docker image
 
 # TODO add :$GIT_COMMIT to gudjonss12/tictactoe
 docker build -t gudjonss12/tictactoe .
 
-# Ensure that docker build exited with rc = 0
+# Ensure that docker build exited with rc = 0, else exit
 rc=$?
 if [[ $rc != 0 ]] ; then
     echo "Docker build failed " $rc
@@ -66,7 +67,7 @@ fi
 
 docker push gudjonss12/tictactoe:$GIT_COMMIT
 
-# Ensure that docker push exited with rc = 0
+# Ensure that docker push exited with rc = 0, else exit
 rc=$?
 if [[ $rc != 0 ]] ; then
     echo "Docker push failed " $rc
