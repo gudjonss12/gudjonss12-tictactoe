@@ -41,7 +41,7 @@ describe('chat handler', function(){
 
 /*
  socket.on('sendMessage', function(messageObj){
- console.debug("Got message ", messageObj);
+ console.log("Got message ", messageObj);
  io.emit('messageReceived', {clientId, sender: connected[clientId],  message: messageObj.message })
  });
  */

@@ -74,7 +74,7 @@ module.exports=function(injected){
         repo.storeEvent(eventObj, function(err){
             console.error('Error storing event object: ' + err)
         }, function(){
-            console.debug('Event stored!');
+            console.log('Event stored!');
         })
     });
 
