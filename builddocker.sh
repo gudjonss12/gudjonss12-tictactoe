@@ -56,7 +56,7 @@ cd build
 echo Building docker image
 
 # TODO add :$GIT_COMMIT to gudjonss12/tictactoe
-docker build -t gudjonss12/tictactoe .
+docker build -t gudjonss12/tictactoe:veryuniquevalue .
 
 # Ensure that docker build exited with rc = 0, else exit
 rc=$?
@@ -65,7 +65,7 @@ if [[ $rc != 0 ]] ; then
     exit $rc
 fi
 
-docker push gudjonss12/tictactoe:$GIT_COMMIT
+#docker push gudjonss12/tictactoe:$GIT_COMMIT
 
 # Ensure that docker push exited with rc = 0, else exit
 rc=$?
