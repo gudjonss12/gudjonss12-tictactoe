@@ -23,7 +23,7 @@ export default function(injected){
             this.unsentMessageChanged = this.unsentMessageChanged.bind(this);
         }
         sendChatMessage(){
-//            console.debug("Sending command message on command port ", this.state.unsentMessage);
+//            console.log("Sending command message on command port ", this.state.unsentMessage);
 //            socket.emit('issueCommand', );
 
             var cmdId = generateUUID();
