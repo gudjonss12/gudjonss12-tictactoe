@@ -10,12 +10,15 @@ module.exports=function(injected){
 
 /*
     {
-        user: 'postgres', //env var: PGUSER
-        database: 'postgres', //env var: PGDATABASE
-        password: 'mysecretpassword', //env var: PGPASSWORD
-        port: 5432, //env var: PGPORT
-        max: 10, // max number of connections in the pool
-        idleTimeoutMillis: 30000 // how long a connection is allowed to remain idle before being closed
+      driver: "pg",
+      user: "postgres",
+      password: "mysecretpassword",
+      host: "postgres",
+      database: "postgres",
+      schema: "postgres",
+      port: 5432,
+      max: 10,
+      idleTimeoutMillis: 30000
     };
 */
 

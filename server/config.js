@@ -1,9 +1,9 @@
 module.exports = {
     development: {
-        sessionSecret: 'developmentSessionSecret'
+        sessionSecret: 'devSessionSecret'
     },
 
     production: {
-        sessionSecret: 'productionSessionSecret'
+        sessionSecret: 'prodSessionSecret'
     }
 };

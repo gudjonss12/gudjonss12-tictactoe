@@ -1,3 +1,5 @@
+const MYENV = process.env.NODE_ENV || 'development'
+
 function serverModule(injected) {
 
     var ENV = injected('env');
@@ -13,7 +15,7 @@ function serverModule(injected) {
     const Postgres = require('./db/postgres');
     const DbConfig = require('./database.json');
 
-    const dbConfig = DbConfig['dev'];
+    const dbConfig = DbConfig[ENV || MYENV || 'development'];
 
     const ChatAppContext = require('./socket-app/server-app-context');
 

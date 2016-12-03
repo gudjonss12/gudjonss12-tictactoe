@@ -1,5 +1,5 @@
 {
-  "dev": {
+  "development": {
     "driver": "pg",
     "user": "postgres",
     "password": "mysecretpassword",
@@ -10,7 +10,7 @@
     "max": 10,
     "idleTimeoutMillis": 30000
   },
-  "prod":{
+  "production":{
       "driver": "pg",
       "user": "postgres",
       "password": "mysecretpassword",
