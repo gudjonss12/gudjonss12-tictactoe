@@ -4,6 +4,6 @@ set -e
 
 sleep 10
 npm run migratedb:prod
-node run.js
+export NODE_ENV=production && node run.js
 
 exit 0
