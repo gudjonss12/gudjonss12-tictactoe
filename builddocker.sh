@@ -1,11 +1,15 @@
 #!/bin/bash
 
-echo Cleaning...
+# Remove old files that are no longer relevant to the current build.
+echo Cleaning up irrelevant files
 rm -rf ./dist
+rm -rf ./.env
 
 # Get the GIT commit hash and the GIT url into variables
 if [ -z "$GIT_COMMIT" ]; then
   export GIT_COMMIT=$(git rev-parse HEAD)
+  # Create a .env file for docker-compose.yaml to read.
+  echo GIT_COMMIT=$GIT_COMMIT > ./.env
   export GIT_URL=$(git config --get remote.origin.url)
 fi
 
@@ -13,7 +17,7 @@ fi
 export GITHUB_URL=$(echo $GIT_URL | rev | cut -c 5- | rev)
 
 # Build the project
-echo Building app
+echo Building application
 npm run build
 
 # Ensure that npm run build exited with rc = 0
@@ -53,25 +57,25 @@ cp ./package.json ./build/
 cp ./wait.sh ./build/
 
 cd build
-echo Building docker image
+echo Building docker image gudjonss12/tictactoe:$GIT_COMMIT
 
-# TODO add :$GIT_COMMIT to gudjonss12/tictactoe
-docker build -t gudjonss12/tictactoe:veryuniquevalue .
+
+docker build -t gudjonss12/tictactoe:$GIT_COMMIT .
 
 # Ensure that docker build exited with rc = 0, else exit
 rc=$?
 if [[ $rc != 0 ]] ; then
-    echo "Docker build failed " $rc
+    echo "Docker failed building image gudjonss12/tictactoe:$GIT_COMMIT " $rc
     exit $rc
 fi
 
-#docker push gudjonss12/tictactoe:$GIT_COMMIT
+docker push gudjonss12/tictactoe:$GIT_COMMIT
 
 # Ensure that docker push exited with rc = 0, else exit
 rc=$?
 if [[ $rc != 0 ]] ; then
-    echo "Docker push failed " $rc
+    echo "Docker failed pushing image gudjonss12/tictactoe:$GIT_COMMIT " $rc
     exit $rc
 fi
 
-echo "Done, all processes successful"
+echo "Done, everything went according to plan! Celebrate, have a beer or something."
