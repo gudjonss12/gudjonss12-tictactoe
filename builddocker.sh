@@ -57,7 +57,7 @@ cp ./package.json ./build/
 cp ./wait.sh ./build/
 
 cd build
-echo Building docker image gudjonss12/tictactoe:$GIT_COMMIT
+echo Building docker image: gudjonss12/tictactoe:$GIT_COMMIT
 
 
 docker build -t gudjonss12/tictactoe:$GIT_COMMIT .
@@ -69,6 +69,7 @@ if [[ $rc != 0 ]] ; then
     exit $rc
 fi
 
+echo Pushing docker image: gudjonss12/tictactoe:$GIT_COMMIT
 docker push gudjonss12/tictactoe:$GIT_COMMIT
 
 # Ensure that docker push exited with rc = 0, else exit
