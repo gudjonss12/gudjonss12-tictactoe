@@ -20,7 +20,7 @@ export GITHUB_URL=$(echo $GIT_URL | rev | cut -c 5- | rev)
 echo Building application
 npm run build
 
-# Ensure that npm run build exited with rc = 0
+# Ensure that npm run build exited with rc = 0, else exit
 rc=$?
 if [[ $rc != 0 ]] ; then
     echo "Npm build failed with exit code " $rc
@@ -55,11 +55,15 @@ _EOF_
 cp ./Dockerfile ./build/
 cp ./package.json ./build/
 cp ./wait.sh ./build/
+cp ./.env ./build/
+
+# Copy the necessary files to the AWS machine.
+# TODO move this to a separate script
+scp -i ./admin-key-key-ireland.pem ./{docker-compose.yaml,.env} ec2-user@52.51.82.250:~/
+# scp -i ./admin-key-key-ireland.pem ./.env ec2-user@52.51.82.250:~/
 
 cd build
 echo Building docker image: gudjonss12/tictactoe:$GIT_COMMIT
-
-
 docker build -t gudjonss12/tictactoe:$GIT_COMMIT .
 
 # Ensure that docker build exited with rc = 0, else exit
