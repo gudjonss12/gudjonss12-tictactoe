@@ -74,7 +74,7 @@ if [[ $rc != 0 ]] ; then
     echo "Docker failed building image gudjonss12/tictactoe:$GIT_COMMIT " $rc
     exit $rc
 fi
-# Pushing docker image with the latest git commit hash
+# Pushing docker image with the latest git commit hash !
 echo Pushing docker image: gudjonss12/tictactoe:$GIT_COMMIT
 docker push gudjonss12/tictactoe:$GIT_COMMIT
 
