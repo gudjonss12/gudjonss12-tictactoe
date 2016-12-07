@@ -2,17 +2,19 @@ version: '2'
 services:
   server:
     environment:
+      # Environment variables for the tictactoe image
       - PGHOST=postgres
       - PGPORT=5432
       - PORT=3000
+    # Make sure the image matching the current git commit hash is the one used
     image: 'gudjonss12/tictactoe:${GIT_COMMIT}'
     ports:
-      - "8080:8080"
-      - "3000:3000"
+      - "80:3000"
     depends_on:
       - postgres
   postgres:
     environment:
+      # Environment variables for the postgres image
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=mysecretpassword
     image: postgres
