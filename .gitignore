@@ -3,4 +3,6 @@
 /public
 /build
 /.idea/
+/.env
+/admin-key-key-ireland.pem
 todo.md
