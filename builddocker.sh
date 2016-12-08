@@ -9,10 +9,9 @@ rm -rf ./.env
 if [ -z "$GIT_COMMIT" ]; then
   export GIT_COMMIT=$(git rev-parse HEAD)
   # Create a .env file for docker-compose.yaml to read.
-  echo GIT_COMMIT=$GIT_COMMIT > ./.env
   export GIT_URL=$(git config --get remote.origin.url)
 fi
-
+echo GIT_COMMIT=$GIT_COMMIT > ./.env
 # Remove .git from url in order to get https link to repo (assumes https url for GitHub)
 export GITHUB_URL=$(echo $GIT_URL | rev | cut -c 5- | rev)
 
@@ -64,13 +63,6 @@ cp ./Dockerfile ./build/
 cp ./package.json ./build/
 cp ./wait.sh ./build/
 cp ./.env ./build/
-
-# Copy the necessary files to the AWS machine.
-# TODO move this to a separate script!
-echo Copying necessary files to AWS instance
-#scp -i ./admin-key-key-ireland.pem ./{docker-compose.yaml,.env} ec2-user@52.51.82.250:~/
-echo Done copying to AWS instance
-
 
 cd build
 echo Building docker image: gudjonss12/tictactoe:$GIT_COMMIT
