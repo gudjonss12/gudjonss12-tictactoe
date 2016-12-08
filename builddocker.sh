@@ -58,7 +58,7 @@ cp ./wait.sh ./build/
 cp ./.env ./build/
 
 # Copy the necessary files to the AWS machine.
-# TODO move this to a separate script
+# TODO move this to a separate script!
 echo Copying necessary files to AWS instance
 scp -i ./admin-key-key-ireland.pem ./{docker-compose.yaml,.env} ec2-user@52.51.82.250:~/
 echo Done copying to AWS instance
