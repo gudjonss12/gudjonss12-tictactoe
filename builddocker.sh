@@ -18,7 +18,11 @@ export GITHUB_URL=$(echo $GIT_URL | rev | cut -c 5- | rev)
 
 # Install dependencies
 echo Installing dependencies
+cd ./client
 npm install
+cd ..
+npm install
+
 
 # Build the project
 echo Building application
