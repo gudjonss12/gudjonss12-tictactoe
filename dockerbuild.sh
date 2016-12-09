@@ -9,7 +9,8 @@ if [ -z "$GIT_COMMIT" ]; then
   export GIT_URL=$(git config --get remote.origin.url)
 fi
 
-cd ./build
+cd ./..
+cd ./tttCommitStage/build/
 echo Building docker image: gudjonss12/tictactoe:$GIT_COMMIT
 docker build -t gudjonss12/tictactoe:$GIT_COMMIT .
 
