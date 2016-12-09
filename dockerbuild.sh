@@ -1,5 +1,5 @@
 # Failsafe for git commit variable
-
+# A test
 if [ -z "$GIT_COMMIT" ]; then
   export GIT_COMMIT=$(git rev-parse HEAD)
   # Create a .env file for docker-compose.yaml to read.
