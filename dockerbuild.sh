@@ -1,3 +1,6 @@
+#!/bin/bash
+
+
 # Failsafe for git commit variable
 # A test
 if [ -z "$GIT_COMMIT" ]; then
