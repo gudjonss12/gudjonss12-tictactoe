@@ -64,25 +64,4 @@ cp ./package.json ./build/
 cp ./wait.sh ./build/
 cp ./.env ./build/
 
-cd build
-echo Building docker image: gudjonss12/tictactoe:$GIT_COMMIT
-docker build -t gudjonss12/tictactoe:$GIT_COMMIT .
-
-# Ensure that docker build exited with rc = 0, else exit
-rc=$?
-if [[ $rc != 0 ]] ; then
-    echo "Docker failed building image gudjonss12/tictactoe:$GIT_COMMIT " $rc
-    exit $rc
-fi
-# Pushing docker image with the latest git commit hash !
-echo Pushing docker image: gudjonss12/tictactoe:$GIT_COMMIT
-docker push gudjonss12/tictactoe:$GIT_COMMIT
-
-# Ensure that docker push exited with rc = 0, else exit
-rc=$?
-if [[ $rc != 0 ]] ; then
-    echo "Docker failed pushing image gudjonss12/tictactoe:$GIT_COMMIT " $rc
-    exit $rc
-fi
-
 echo "Done, everything went according to plan! Celebrate, have a beer or something."
