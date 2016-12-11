@@ -11,6 +11,7 @@ module.exports=function(injected){
             listener = (message)=>{
                 message._session = session;
                 console.log("Incoming message from socket.io: " + socketIoVerb + " message: ", message );
+                //console.debug("Incoming message from socket.io: " + socketIoVerb + " message: ", message );
                 messageRouter.routeMessage(message);
             };
 

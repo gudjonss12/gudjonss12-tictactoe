@@ -6,6 +6,8 @@ module.exports = (function() {
     // Use the environment variable NODE_ENV, defaults to development if its not set.
     var env = process.env.NODE_ENV || 'development';
 
+    console.log("Run env:", process.env);
+
     var server = require('./server/server.js')(inject({
         port,
         env

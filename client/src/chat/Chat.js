@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import './Chat.css';
 
 export default function(injected){
 
