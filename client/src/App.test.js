@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import AppModule from './App';
 import inject from './common/framework/inject';
 import fakeIoModule from './_test/fakeIo';
-import appContextModule from './appcontext';
+import appContextModule from './appContext';
 
 var io = fakeIoModule();
 var eventRouter = fakeIoModule();
