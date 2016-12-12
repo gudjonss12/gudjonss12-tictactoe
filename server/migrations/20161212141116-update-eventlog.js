@@ -18,7 +18,7 @@ exports.up = function(db,callback) {
   db.addColumn('eventlog', 'aggregate_id', {type: 'string'}, callback);};
 
 exports.down = function(db) {
-  return null;
+  db.removeColumn('eventlog', 'aggregate_id', callback); 
 };
 
 exports._meta = {
