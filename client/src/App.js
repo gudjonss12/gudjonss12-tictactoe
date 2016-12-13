@@ -20,7 +20,7 @@ export default function(injected){
                             <img src={logo} className="App-logo" alt="logo"/>
                         </div>
                         <div>
-                            <h2>Welcome to HGOP 2016 base app</h2>
+                            <h2>Welcome to gudjonss12 1337 tictactoe application</h2>
                         </div>
                         <div className="App-header-right">
                             <ConnectedClients></ConnectedClients>
