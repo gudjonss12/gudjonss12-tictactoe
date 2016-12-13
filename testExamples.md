@@ -9,44 +9,22 @@
 
 ## 3. Place move command ##
 ### General game tests ###
-
-Given |00 |01 |02 |
-      |10 |11 |12 |
-      |20 |21 |22 |,
-      When[PlaceMove(0,0)],
-      Then[MovePlaced].
-
-Given[['O'], ['01'], ['02'], when[PlaceMove(0,0), X-Turn], then[IllegalMove]
-      ['10'], ['11'], ['12'],
-      ['20'], ['21'], ['22']]
-
-Given[['00'], ['01'], ['02'], when[PlaceMove(0,0), X-turn], then[NotYourMove]
-      ['10'], ['11'], ['12'],
-      ['20'], ['21'], ['22']]
+- Given[GameCreated, GameJoined], when[PlaceMove(0,0, 'O')], then[MovePlaced(0,0, 'O')].
+- Given[GameCreated, GameJoined, MovePlaced(0,0, 'O')], when[PlaceMove(0,0, 'X')], then[IllegalMove(0,0)]
+- Given[GameCreated, GameJoined, MovePlaced(0,0, 'O')], when[PlaceMove(0,1, 'O')], then[NotYourMove(O)]
 
 ### Game win condition tests ###
 #### Horizontal winner ####
-Given[['X'], ['X'], ['02'], when[PlaceMove(0,2), X-turn], then[GameWon(X)]
-      ['O'], ['O'], ['12'],
-      ['O'], ['X'], ['O']]
+- Given[GameCreated, MovePlaced(0,0, 'O'), MovePlaced(0,1, 'O')], when[PlaceMove(0,2, 'O')], then[GameWon('O')]
 
 #### Vertical winner ####        
-Given[['00'], ['X'], ['O'], when[PlaceMove(0,0), O-turn], then[GameWon(O)]
-      ['O'], ['X'], ['X'],
-      ['O'], ['O'], ['22']]        
+- Given[GameCreated, MovePlaced(0,0, 'O'), MovePlaced(1,0, 'O')], when[PlaceMove(2,0, 'O')], then[GameWon('O')]
 
 #### Diagonal winner topleft-bottomright
-Given[['00'], ['X'], ['X'], when[PlaceMove(0,0), O-turn], then[GameWon(O)]
-      ['O'], ['O'], ['X'],
-      ['X'], ['O'], ['O']]
+- Given[GameCreated, MovePlaced(0,0, 'X'), MovePlaced(1,1, 'X')], when[PlaceMove(2,2, 'X')], then[GameWon('X')]
 
 #### Diagonal winner bottomleft-topright
-Given[['X'], ['X'], ['02'], when[PlaceMove(0,2), O-turn], then[GameWon(O)]
-      ['X'], ['O'], ['O'],
-      ['O'], ['O'], ['X']]
+- Given[GameCreated, MovePlaced(2,0, 'O'), MovePlaced(1,1, 'O')], when[PlaceMove(0,2, 'O')], then[GameWon('O')]
 
 #### Game draw ####
-
-Given[['X'], ['X'], ['O'], when[PlaceMove(2,2), O-turn], then[GameDraw]
-      ['O'], ['O'], ['X'],
-      ['X'], ['O'], ['22']]        
+- Given[GameCreated, moveCount=8], when[MovePlaced(0,0, 'O'), noWinner], then[GameDraw]        
