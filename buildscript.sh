@@ -64,4 +64,4 @@ cp ./package.json ./build/
 cp ./wait.sh ./build/
 cp ./.env ./build/
 
-echo "Done, everything went according to plan! Celebrate, have a beer or something."
+echo "Done, everything went according to plan!"
