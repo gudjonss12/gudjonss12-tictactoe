@@ -41,3 +41,9 @@
 - Given[['X'], ['X'], ['02'], when[PlaceMove(0,2), O-turn], then[GameWon(O)]
         ['X'], ['O'], ['O'],
         ['O'], ['O'], ['X']]
+
+#### Game draw ####
+
+- Given[['X'], ['X'], ['O'], when[PlaceMove(2,2), O-turn], then[GameDraw]
+        ['O'], ['O'], ['X'],
+        ['X'], ['O'], ['22']]        
