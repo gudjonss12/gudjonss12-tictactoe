@@ -9,10 +9,13 @@
 
 ## 3. Place move command ##
 ### General game tests ###
-- Given[['00'], ['01'], ['02'], 
-      ['10'], ['11'], ['12'],
-      ['20'], ['21'], ['22']]
-      when[PlaceMove(0,0), O-Turn], then[MovePlaced]
+
+- Given |00 |01 |02 |
+        |10 |11 |12 |
+        |20 |21 |22 |,
+        When[PlaceMove(0,0)],
+        Then[MovePlaced].
+        
 Given[['O'], ['01'], ['02'], when[PlaceMove(0,0), X-Turn], then[IllegalMove]
       ['10'], ['11'], ['12'],
       ['20'], ['21'], ['22']]
