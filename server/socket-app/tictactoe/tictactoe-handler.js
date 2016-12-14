@@ -42,12 +42,13 @@ module.exports = function(injected){
                             side:'O'
                         }]);
                     },
+                    // Check here for conditions which prevent command from altering state
                     "PlaceMove": function(cmd){
                       if(gameState.playerTurn() != cmd.side){
                         eventHandler( [{
                             gameId: cmd.gameId,
                             type: "NotYourMove",
-                            cell: 1,
+                            cell: cmd.cell,
                             user: cmd.user,
                             timeStamp: cmd.timeStamp,
                             side: cmd.side,
@@ -79,11 +80,8 @@ module.exports = function(injected){
                         name: cmd.name
                       }]);
 
-
-                        // Check here for conditions which prevent command from altering state
-
+                        // TODO ask TA's about this part
                         //gameState.processEvents(events);
-
                         // Check here for conditions which may warrant additional events to be emitted.
                         //eventHandler(events);
                     }

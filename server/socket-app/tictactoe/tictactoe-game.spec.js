@@ -331,8 +331,5 @@ describe('Place move command', function() {
           name: "TheFirstGame"
         }
       ];
-
-
     });
-
 });

@@ -5,7 +5,7 @@ module.exports = function (injected) {
     return function (history) {
 
         var gamefull = false;
-        var playerturn = 'X';
+        var playersymbol = 'X';
 
         var board = [null, null, null, null, null, null, null, null, null];
 
@@ -15,16 +15,12 @@ module.exports = function (injected) {
           }
           if(event.type == "MovePlaced" && event.side == 'X'){
             board[event.cell] = event.side;
-            playerturn = 'O';
+            playersymbol = 'O';
           }
           if(event.type == "MovePlaced" && event.side == 'O'){
             board[event.cell] = event.side;
-            playerturn = 'X';
+            playersymbol = 'X';
           }
-          /*if(event.type == 'PlaceMove'){
-            board[event.cell] = event.side;
-            console.log('board:', board);
-          }*/
         }
 
         function processEvents(history) {
@@ -32,7 +28,7 @@ module.exports = function (injected) {
         }
 
         function placeSymbol(where) {
-          board[where] = playerTurn;
+          board[where] = playerTurn();
         }
 
         function cellFree(where) {
@@ -47,7 +43,7 @@ module.exports = function (injected) {
         }
 
         function playerTurn() {
-          return playerturn;
+          return playersymbol;
         }
 
         processEvents(history);
