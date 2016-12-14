@@ -43,13 +43,33 @@ module.exports = function(injected){
                         }]);
                     },
                     "PlaceMove": function(cmd){
+                      /*if(gameState.playerTurn() != cmd.side){
+                        eventHandler( [{
+                            gameId: cmd.gameId,
+                            type: "NotYourMove",
+                            user: cmd.user,
+                            name: cmd.name,
+                            timeStamp: cmd.timeStamp
+                        }]);
+                        return;
+                      }*/
+
+                      eventHandler( [{
+                        gameId: cmd.gameId,
+                        type: "MovePlaced",
+                        user: cmd.user,
+                        timeStamp: cmd.timeStamp,
+                        side: cmd.side,
+                        name: cmd.name
+                      }]);
+
 
                         // Check here for conditions which prevent command from altering state
 
-                        gameState.processEvents(events);
+                        //gameState.processEvents(events);
 
                         // Check here for conditions which may warrant additional events to be emitted.
-                        eventHandler(events);
+                        //eventHandler(events);
                     }
                 };
 
@@ -61,4 +81,3 @@ module.exports = function(injected){
         }
     }
 };
-
