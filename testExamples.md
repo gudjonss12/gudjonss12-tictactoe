@@ -17,7 +17,7 @@
 #### Horizontal winner ####
 - Given[GameCreated, MovePlaced(0,0, 'O'), MovePlaced(0,1, 'O')], when[PlaceMove(0,2, 'O')], then[GameWon('O')]
 
-#### Vertical winner ####        
+#### Vertical winner         
 - Given[GameCreated, MovePlaced(0,0, 'O'), MovePlaced(1,0, 'O')], when[PlaceMove(2,0, 'O')], then[GameWon('O')]
 
 #### Diagonal winner topleft-bottomright
