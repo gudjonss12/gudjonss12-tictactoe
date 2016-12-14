@@ -184,7 +184,7 @@ describe('Place move command', function() {
           cell: 0,
           user: {userName: "TheGuy"},
           timeStamp: "2014-12-02T11:30:29",
-          side: 'O',
+          side: 'X',
           name: "TheFirstGame"
         };
       then = [
@@ -193,7 +193,7 @@ describe('Place move command', function() {
           cell: 0,
           user: {userName: "TheGuy"},
           timeStamp: "2014-12-02T11:30:29",
-          side: 'O',
+          side: 'X',
           name: "TheFirstGame"
         }
       ];
@@ -242,4 +242,51 @@ describe('Place move command', function() {
         }
       ];
     });
+
+    it('should emit NotYourMove after PlaceMove during other players turn', function () {
+      given = [
+        {
+          type: "GameCreated",
+          user: {userName: "TheGuy"},
+          name: "TheFirstGame",
+          timeStamp: "2014-12-02T11:29:29"
+        },
+        {
+          type: "GameJoined",
+          user: {userName: "Gux"},
+          name: "TheFirstGame",
+          timeStamp: "2014-12-02T11:29:30",
+          side:'O'
+        },
+        {
+          type: "MovePlaced",
+          cell: 0,
+          user: {userName: "TheGuy"},
+          timeStamp: "2014-12-02T11:30:29",
+          side: 'X',
+          name: "TheFirstGame"
+        }
+      ];
+      when = {
+          type: "PlaceMove",
+          cell: 1,
+          user: {userName: "TheGuy"},
+          timeStamp: "2014-12-02T11:30:31",
+          side: 'X',
+          name: "TheFirstGame"
+      };
+      then = [
+        {
+          type: "NotYourMove",
+          cell: 1,
+          user: {userName: "TheGuy"},
+          timeStamp: "2014-12-02T11:30:31",
+          side: 'X',
+          name: "TheFirstGame"
+        }
+      ];
+
+
+    });
+
 });

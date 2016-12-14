@@ -16,14 +16,17 @@ module.exports = function (injected) {
           if(event.type == "MovePlaced" && event.side == 'X'){
             board[event.cell] = event.side;
             playerturn = 'O';
+            console.log('board:', board);
           }
           if(event.type == "MovePlaced" && event.side == 'O'){
             board[event.cell] = event.side;
             playerturn = 'X';
+            console.log('board:', board);
           }
-          if(event.type == 'PlaceMove'){
+          /*if(event.type == 'PlaceMove'){
             board[event.cell] = event.side;
-          }
+            console.log('board:', board);
+          }*/
         }
 
         function processEvents(history) {

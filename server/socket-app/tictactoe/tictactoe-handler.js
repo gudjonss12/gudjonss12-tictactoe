@@ -43,16 +43,18 @@ module.exports = function(injected){
                         }]);
                     },
                     "PlaceMove": function(cmd){
-                      /*if(gameState.playerTurn() != cmd.side){
+                      if(gameState.playerTurn() != cmd.side){
                         eventHandler( [{
                             gameId: cmd.gameId,
                             type: "NotYourMove",
+                            cell: 1,
                             user: cmd.user,
-                            name: cmd.name,
-                            timeStamp: cmd.timeStamp
+                            timeStamp: cmd.timeStamp,
+                            side: cmd.side,
+                            name: cmd.name
                         }]);
                         return;
-                      }*/
+                      };
 
                       if(!gameState.cellFree(cmd.cell)) {
                         eventHandler( [{
