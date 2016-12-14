@@ -181,21 +181,65 @@ describe('Place move command', function() {
       when =
         {
           type: "PlaceMove",
+          cell: 0,
           user: {userName: "TheGuy"},
           timeStamp: "2014-12-02T11:30:29",
-          side: 'X',
+          side: 'O',
           name: "TheFirstGame"
         };
       then = [
         {
           type: "MovePlaced",
+          cell: 0,
+          user: {userName: "TheGuy"},
+          timeStamp: "2014-12-02T11:30:29",
+          side: 'O',
+          name: "TheFirstGame"
+        }
+      ];
+    });
+
+    it('should emit IllegalMove after PlaceMove on an occupied space during your turn', function () {
+      given = [
+        {
+          type: "GameCreated",
+          user: {userName: "TheGuy"},
+          name: "TheFirstGame",
+          timeStamp: "2014-12-02T11:29:29"
+        },
+        {
+          type: "GameJoined",
+          user: {userName: "Gux"},
+          name: "TheFirstGame",
+          timeStamp: "2014-12-02T11:29:30",
+          side:'O'
+        },
+        {
+          type: "MovePlaced",
+          cell: 0,
           user: {userName: "TheGuy"},
           timeStamp: "2014-12-02T11:30:29",
           side: 'X',
           name: "TheFirstGame"
         }
       ];
-
+      when = {
+          type: "PlaceMove",
+          cell: 0,
+          user: {userName: "Gux"},
+          timeStamp: "2014-12-02T11:30:31",
+          side: 'O',
+          name: "TheFirstGame"
+      };
+      then = [
+        {
+          type: "IllegalMove",
+          cell: 0,
+          user: {userName: "Gux"},
+          timeStamp: "2014-12-02T11:30:31",
+          side: 'O',
+          name: "TheFirstGame"
+        }
+      ];
     });
-
 });

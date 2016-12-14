@@ -54,9 +54,23 @@ module.exports = function(injected){
                         return;
                       }*/
 
+                      if(!gameState.cellFree(cmd.cell)) {
+                        eventHandler( [{
+                          gameId: cmd.gameId,
+                          type: "IllegalMove",
+                          cell: cmd.cell,
+                          user: cmd.user,
+                          timeStamp: cmd.timeStamp,
+                          side: cmd.side,
+                          name: cmd.name
+                        }])
+                        return;
+                      };
+
                       eventHandler( [{
                         gameId: cmd.gameId,
                         type: "MovePlaced",
+                        cell: cmd.cell,
                         user: cmd.user,
                         timeStamp: cmd.timeStamp,
                         side: cmd.side,
