@@ -27,15 +27,34 @@ npm install
 echo Building application
 CI=true npm run build
 
-cd ./client
-echo Running continuous integration tests
-CI=true npm run test
-cd ..
-
 # Ensure that npm run build exited with rc = 0, else exit
 rc=$?
 if [[ $rc != 0 ]] ; then
     echo "Npm build failed with exit code " $rc
+    exit $rc
+fi
+
+cd ./client
+echo Running continuous integration tests client side
+CI=true npm run test
+cd ..
+
+# Ensure that npm run test client side exited with rc = 0, else exit
+rc=$?
+if [[ $rc != 0 ]] ; then
+    echo "Npm test: client failed with exit code " $rc
+    exit $rc
+fi
+
+cd ./server
+echo Running contionus integration tests server side
+CI=true npm run test
+cd ..
+
+# Ensure that npm run test server side exited with rc = 0, else exit
+rc=$?
+if [[ $rc != 0 ]] ; then
+    echo "Npm test: server failed with exit code " $rc
     exit $rc
 fi
 
