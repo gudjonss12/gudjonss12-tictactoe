@@ -6,6 +6,7 @@ module.exports = function (injected) {
 
         var gamefull = false;
         var playersymbol = 'X';
+        var moveCount = 0;
 
         var board = [null, null, null, null, null, null, null, null, null];
 
@@ -15,10 +16,12 @@ module.exports = function (injected) {
           }
           if(event.type == "MovePlaced" && event.side == 'X'){
             board[event.cell] = event.side;
+            moveCount = moveCount + 1;
             playersymbol = 'O';
           }
           if(event.type == "MovePlaced" && event.side == 'O'){
             board[event.cell] = event.side;
+            moveCount = moveCount + 1;
             playersymbol = 'X';
           }
         }
@@ -85,6 +88,14 @@ module.exports = function (injected) {
           return false;
         }
 
+        function checkDraw() {
+          if(moveCount === 9 && !checkWinner('O') && !checkWinner('X')) {
+            return true;
+          }
+
+          return false;
+        }
+
         function gameFull() {
           return gamefull;
         }
@@ -96,6 +107,7 @@ module.exports = function (injected) {
         processEvents(history);
 
         return {
+            checkDraw: checkDraw,
             checkWinner: checkWinner,
             cellFree: cellFree,
             placeSymbol: placeSymbol,

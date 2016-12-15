@@ -628,4 +628,109 @@ describe('Place move command', function() {
         }
       ];
     });
+
+    it('should emit MovePlaced and GameDraw if playing the 9th move with no winner', function () {
+      given = [
+        {
+          type: "GameCreated",
+          user: {userName: "TheGuy"},
+          name: "TheFirstGame",
+          timeStamp: "2014-12-02T11:29:29"
+        },
+        {
+          type: "GameJoined",
+          user: {userName: "Gux"},
+          name: "TheFirstGame",
+          timeStamp: "2014-12-02T11:29:30",
+          side:'O'
+        },
+        {
+          type: "MovePlaced",
+          cell: 0,
+          user: {userName: "TheGuy"},
+          timeStamp: "2014-12-02T11:30:29",
+          side: 'X',
+          name: "TheFirstGame"
+        },
+        {
+          type: "MovePlaced",
+          cell: 1,
+          user: {userName: "Gux"},
+          timeStamp: "2014-12-02T11:30:29",
+          side: 'O',
+          name: "TheFirstGame"
+        },
+        {
+          type: "MovePlaced",
+          cell: 2,
+          user: {userName: "TheGuy"},
+          timeStamp: "2014-12-02T11:30:29",
+          side: 'X',
+          name: "TheFirstGame"
+        },
+        {
+          type: "MovePlaced",
+          cell: 5,
+          user: {userName: "Gux"},
+          timeStamp: "2014-12-02T11:30:29",
+          side: 'O',
+          name: "TheFirstGame"
+        },
+        {
+          type: "MovePlaced",
+          cell: 3,
+          user: {userName: "TheGuy"},
+          timeStamp: "2014-12-02T11:30:29",
+          side: 'X',
+          name: "TheFirstGame"
+        },
+        {
+          type: "MovePlaced",
+          cell: 6,
+          user: {userName: "Gux"},
+          timeStamp: "2014-12-02T11:30:29",
+          side: 'O',
+          name: "TheFirstGame"
+        },
+        {
+          type: "MovePlaced",
+          cell: 4,
+          user: {userName: "TheGuy"},
+          timeStamp: "2014-12-02T11:30:29",
+          side: 'X',
+          name: "TheFirstGame"
+        },
+        {
+          type: "MovePlaced",
+          cell: 8,
+          user: {userName: "Gux"},
+          timeStamp: "2014-12-02T11:30:29",
+          side: 'O',
+          name: "TheFirstGame"
+        }
+      ];
+        when = {
+          type: "PlaceMove",
+          cell: 7,
+          user: {userName: "TheGuy"},
+          timeStamp: "2014-12-02T11:30:29",
+          side: 'X',
+          name: "TheFirstGame"
+        };
+        then = [
+          {
+          type: "MovePlaced",
+          cell: 7,
+          user: {userName: "TheGuy"},
+          timeStamp: "2014-12-02T11:30:29",
+          side: 'X',
+          name: "TheFirstGame"
+        },
+        {
+          type: "GameDraw",
+          timeStamp: "2014-12-02T11:30:29",
+          name: "TheFirstGame"
+        }
+      ];
+    });
 });

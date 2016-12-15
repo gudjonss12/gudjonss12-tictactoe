@@ -94,6 +94,14 @@ module.exports = function(injected){
                         name: cmd.name
                         })
                       };
+                      if(gameState.checkDraw()){
+                        events.push( {
+                        gameId: cmd.gameId,
+                        type: "GameDraw",
+                        timeStamp: cmd.timeStamp,
+                        name: cmd.name
+                        })
+                      };
                       eventHandler(events);
                     }
                 };
