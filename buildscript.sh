@@ -64,4 +64,9 @@ cp ./package.json ./build/
 cp ./wait.sh ./build/
 cp ./.env ./build/
 
+cd ./build/
+echo Running continuous integration tests
+npm run citest
+cd ..
+
 echo "Done, everything went according to plan!"
