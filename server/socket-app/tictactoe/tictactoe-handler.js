@@ -69,8 +69,9 @@ module.exports = function(injected){
                         }])
                         return;
                       };
+                      var events = [];
 
-                      eventHandler( [{
+                      events.push ({
                         gameId: cmd.gameId,
                         type: "MovePlaced",
                         cell: cmd.cell,
@@ -78,12 +79,22 @@ module.exports = function(injected){
                         timeStamp: cmd.timeStamp,
                         side: cmd.side,
                         name: cmd.name
-                      }]);
+                      });
 
-                        // TODO ask TA's about this part
-                        //gameState.processEvents(events);
-                        // Check here for conditions which may warrant additional events to be emitted.
-                        //eventHandler(events);
+                      // TODO ask TA's about this part
+                      gameState.processEvents(events);
+                      // Check here for conditions which may warrant additional events to be emitted.
+                      if(gameState.checkWinner(cmd.side)){
+                        events.push( {
+                        gameId: cmd.gameId,
+                        type: "GameWon",
+                        user: cmd.user,
+                        timeStamp: cmd.timeStamp,
+                        side: cmd.side,
+                        name: cmd.name
+                        })
+                      };
+                      eventHandler(events);
                     }
                 };
 
