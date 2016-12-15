@@ -27,11 +27,10 @@ npm install
 echo Building application
 CI=true npm run build
 
-cd /build/client
+cd /client
 echo Running continuous integration tests
 npm run citest
 cd ..
-
 
 # Ensure that npm run build exited with rc = 0, else exit
 rc=$?
