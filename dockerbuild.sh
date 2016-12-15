@@ -10,6 +10,10 @@ if [ -z "$GIT_COMMIT" ]; then
 fi
 
 cd ./build/
+
+echo Running continuous integration tests
+npm run citest
+
 echo Building docker image: gudjonss12/tictactoe:$GIT_COMMIT
 docker build -t gudjonss12/tictactoe:$GIT_COMMIT .
 

@@ -7,20 +7,6 @@ var tictactoe = require('./tictactoe-handler')(inject({
     TictactoeState
 }));
 
-var createEvent = {
-    type: "GameCreated",
-    user: {userName: "TheGuy"},
-    name: "TheFirstGame",
-    timeStamp: "2014-12-02T11:29:29"
-};
-
-var joinEvent = {
-    type: "GameJoined",
-    user: {userName: "Gummi"},
-    name: "TheFirstGame",
-    timeStamp: "2014-12-02T11:29:29"
-};
-
 
 describe('create game command', function() {
 
