@@ -29,8 +29,7 @@ CI=true npm run build
 
 cd ./client
 echo Running continuous integration tests
-npm run citest
-a
+CI=true npm run test
 cd ..
 
 # Ensure that npm run build exited with rc = 0, else exit
