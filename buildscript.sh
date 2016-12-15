@@ -27,7 +27,7 @@ npm install
 echo Building application
 CI=true npm run build
 
-cd /client
+cd ./client
 echo Running continuous integration tests
 npm run citest
 cd ..
