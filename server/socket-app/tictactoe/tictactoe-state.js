@@ -78,7 +78,7 @@ module.exports = function (injected) {
         }
 
         function checkWinner(symbol) {
-          if(checkHorizontal(symbol) || checkVertical(symbol)) {
+          if(checkHorizontal(symbol) || checkVertical(symbol) || checkDiagonal(symbol)) {
             return true;
           }
 
