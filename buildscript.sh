@@ -25,7 +25,13 @@ npm install
 
 # Build the project
 echo Building application
-npm run build
+CI=true npm run build
+
+cd /build/client
+echo Running continuous integration tests
+npm run citest
+cd ..
+
 
 # Ensure that npm run build exited with rc = 0, else exit
 rc=$?
@@ -63,10 +69,5 @@ cp ./Dockerfile ./build/
 cp ./package.json ./build/
 cp ./wait.sh ./build/
 cp ./.env ./build/
-
-cd /server/
-echo Running continuous integration tests
-npm run citest
-cd ..
 
 echo "Done, everything went according to plan!"
