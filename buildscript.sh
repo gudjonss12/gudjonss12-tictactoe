@@ -64,10 +64,9 @@ cp ./package.json ./build/
 cp ./wait.sh ./build/
 cp ./.env ./build/
 
-cd ./build/server/
+cd /server/
 echo Running continuous integration tests
 npm run citest
-cd ..
 cd ..
 
 echo "Done, everything went according to plan!"
