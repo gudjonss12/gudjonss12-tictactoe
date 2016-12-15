@@ -48,7 +48,7 @@ fi
 
 cd ./server
 echo Running contionus integration tests server side
-CI=true npm run test
+CI=true npm run citest
 cd ..
 
 # Ensure that npm run test server side exited with rc = 0, else exit
