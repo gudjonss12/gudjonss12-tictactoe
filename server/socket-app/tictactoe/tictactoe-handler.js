@@ -81,9 +81,8 @@ module.exports = function(injected){
                         name: cmd.name
                       });
 
-                      // TODO ask TA's about this part
                       gameState.processEvents(events);
-                      // Check here for conditions which may warrant additional events to be emitted.
+                      // Check if there is a winner in the game
                       if(gameState.checkWinner(cmd.side)){
                         events.push( {
                         gameId: cmd.gameId,
@@ -94,6 +93,7 @@ module.exports = function(injected){
                         name: cmd.name
                         })
                       };
+                      // Check if the game has ended with a draw
                       if(gameState.checkDraw()){
                         events.push( {
                         gameId: cmd.gameId,
