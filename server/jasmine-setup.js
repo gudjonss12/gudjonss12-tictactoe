@@ -1,6 +1,14 @@
 require('./globals');
 
 
+var reporters = require('jasmine-reporters');
+var junitReporter = new reporters.JUnitXmlReporter({
+    savePath: './coverage/',
+    consolidateAll: false
+});
+jasmine.getEnv().addReporter(junitReporter);
+
+
 var JasmineConsoleReporter = require('jasmine-console-reporter');
 var consoleReporter = new JasmineConsoleReporter({
     colors: 1,           // (0|false)|(1|true)|2

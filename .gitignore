@@ -3,6 +3,7 @@
 /public
 /build
 /dist
+/coverage
 /.idea/
 /.env
 /admin-key-key-ireland.pem
