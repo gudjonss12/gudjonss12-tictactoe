@@ -1,6 +1,6 @@
 require('./globals');
 
-
+// This part is to publish test results as .xml files
 var reporters = require('jasmine-reporters');
 var junitReporter = new reporters.JUnitXmlReporter({
     savePath: './coverage/',
@@ -8,7 +8,7 @@ var junitReporter = new reporters.JUnitXmlReporter({
 });
 jasmine.getEnv().addReporter(junitReporter);
 
-
+// This part is to display test results to console
 var JasmineConsoleReporter = require('jasmine-console-reporter');
 var consoleReporter = new JasmineConsoleReporter({
     colors: 1,           // (0|false)|(1|true)|2
