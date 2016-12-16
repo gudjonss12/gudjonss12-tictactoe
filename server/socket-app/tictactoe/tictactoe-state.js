@@ -38,6 +38,7 @@ module.exports = function (injected) {
           if (board[where] != null) {
             return false;
           }
+          
           return true;
         }
 
