@@ -8,61 +8,56 @@ Outline what script files you created and the purpose of each file. Each file sh
 
 - buildscript.sh - Ran during commit satge. Cleans up old files no longer needed. Runs npm install for client/server, builds the program, runs unit tests and copies required files to the build directory.
 
+- copytoaws.sh - copies neccessary files from jenknis to aws ec2-instance, docker-compose.yaml and .env, needed for the git hash
+
+- Dockerfile - settins for docker such as workdir inside container, npm install and the port used.
 
 ## Testing & logic
 
 Outline what tests you created.
 
-- UnitTests, server logic TDD (Git commit log)
+- UnitTests, server logic TDD -Yes, see git commit history dec 14-15
 
-- API Acceptance test - fluent API
+- API Acceptance test - fluent API - Yes
 
-- Load test loop
+- Load test loop - No
 
-- UI TDD
+- UI TDD - No
 
-- Is the game playable?
+- Is the game playable? - No
 
 
 ## Data migration
 
-Did you create a data migration.
+Did you create a data migration. - Yes
 
-- Migration up and down
+- Migration up and down - Yes
 
 
 ## Jenkins
 
 Do you have the following Jobs and what happens in each Job:
 
-- Commit Stage
+- Commit Stage - Yes, buildscript ran. Necessary files copied to build folder, unit tests ran.
 
-- Acceptance Stage
+- Acceptance Stage -Triggered by commit stage, docker-compose up on jenkins instance, apitests ran.
 
-- Capacity Stage
-
-- Other
+- Deployment stage - Triggered by acceptance stage, files copied to aws ec2-instance and program deployed
 
 
 Did you use any of the following features in Jenkins?
 
-- Schedule or commit hooks
+- Schedule or commit hooks - Yes,Commit hooks
 
-- Pipeline
+- Pipeline -- No
 
-- Jenkins file
+- Jenkins file - No
 
-- Test reports
-
-- Other
-
+- Test reports - Yes, unit test results published post commit stage. Viewable inside jenkins manager.
 
 ## Monitoring
 
 Did you do any monitoring?
-
-- URL to monitoring tool. Must be open or include username and pass.
-
 
 ## Other
 
