@@ -1,5 +1,5 @@
 #!/bin/bash
-
+exit
 # Remove old files that are no longer relevant to the current build.
 echo Cleaning up irrelevant files
 rm -rf ./dist
