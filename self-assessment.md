@@ -2,13 +2,11 @@
 
 Outline what script files you created and the purpose of each file. Each file should be commented. This could be
 
-- Docker build
+- Docker build - Ran during the Acceptance stage. Builds docker image with latest git commit hash as tag.
 
-- Docker compose
+- Docker compose - Used whenever docker-compose up is ran. Settings file for which images to run. Tells the images what ports to listen to and othet settings.
 
-- AWS Provisioning 
-
-- Other scripts
+- buildscript.sh - Ran during commit satge. Cleans up old files no longer needed. Runs npm install for client/server, builds the program, runs unit tests and copies required files to the build directory.
 
 
 ## Testing & logic
