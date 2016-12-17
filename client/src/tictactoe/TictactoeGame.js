@@ -103,7 +103,7 @@ export default function (injected) {
                 type:"RequestOpenGames"
             });
         }
-        createGame(){
+        CreateGame(){
             var cmdId = generateUUID();
             commandPort.routeMessage({
                 commandId:cmdId,
@@ -130,7 +130,7 @@ export default function (injected) {
 
             var gameOver=undefined;
             var gameView = <div>
-                <button type="button" role="button" onClick={this.createGame}>Create new game</button>
+                <button type="button" role="button" onClick={this.CreateGame}>Create new game</button>
                 <h2>Open games:</h2>
                 {openGames}
             </div>;
