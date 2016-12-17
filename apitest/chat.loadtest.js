@@ -26,8 +26,9 @@ describe('User chat load test', function(){
         });
     });
 
-    const count = 200;
-    const timelimit = 2000;
+    // Play 100 games within 60 seconds
+    const count = 100;
+    const timelimit = 12000;
 
     it('should connect and send ' + count + '  user messages within '+ timelimit +'ms',function(done){
 
@@ -61,5 +62,3 @@ describe('User chat load test', function(){
             });
     });
 });
-
-
