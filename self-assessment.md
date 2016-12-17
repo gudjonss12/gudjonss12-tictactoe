@@ -8,9 +8,9 @@ Outline what script files you created and the purpose of each file. Each file sh
 
 - buildscript.sh - Ran during commit satge. Cleans up old files no longer needed. Runs npm install for client/server, builds the program, runs unit tests and copies required files to the build directory.
 
-- copytoaws.sh - copies neccessary files from jenknis to aws ec2-instance, docker-compose.yaml and .env, needed for the git hash
+- copytoaws.sh - copies neccessary files from jenkins to aws ec2-instance, docker-compose.yaml and .env, needed for the git hash
 
-- Dockerfile - settins for docker such as workdir inside container, npm install and the port used.
+- Dockerfile - settings for docker such as workdir inside container, npm install and the port used.
 
 ## Testing & logic
 
@@ -20,7 +20,7 @@ Outline what tests you created.
 
 - API Acceptance test - fluent API - Yes
 
-- Load test loop - No
+- Load test loop - Yes
 
 - UI TDD - No
 
@@ -40,14 +40,16 @@ Do you have the following Jobs and what happens in each Job:
 
 - Commit Stage - Yes, buildscript ran. Necessary files copied to build folder, unit tests ran.
 
-- Acceptance Stage -Triggered by commit stage, docker-compose up on jenkins instance, apitests ran.
+- Acceptance Stage - Triggered by commit stage, docker-compose up on jenkins instance, apitests ran.
+
+- CapacityStage - Triggered by AcceptanceStage, run loadtests and stop docker-compose after.
 
 - Deployment stage - Triggered by acceptance stage, files copied to aws ec2-instance and program deployed
 
 
 Did you use any of the following features in Jenkins?
 
-- Schedule or commit hooks - Yes,Commit hooks
+- Schedule or commit hooks - Yes,Commit hooks.
 
 - Pipeline -- No
 
@@ -58,6 +60,8 @@ Did you use any of the following features in Jenkins?
 ## Monitoring
 
 Did you do any monitoring?
+
+I set up datadog with very little customization, can see data from my jenkins instance as well as some metrics on my personal virtual machine.
 
 ## Other
 

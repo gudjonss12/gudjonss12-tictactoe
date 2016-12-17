@@ -13,7 +13,7 @@ const testAPI = TestAPI(inject({
     RoutingContext
 }));
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000;
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 40000;
 
 describe('Load test', function(){
 
@@ -27,7 +27,7 @@ describe('Load test', function(){
     });
 
     const count = 100;
-    const timelimit = 60000;
+    const timelimit = 20000;
 
     it('Should play  ' + count + '  games within  '+ timelimit +'ms',function(done){
 
